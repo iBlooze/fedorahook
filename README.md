@@ -4,18 +4,18 @@ a "base" based on nSkinz
 I have added the following
 
 Hooks:
-  CreateMove
-  LockCursor
-  DrawModelExecute
-  PaintTraverse
-  FrameStageNotify
-  All EventListeners (Using AddListenerGlobal)
+	CreateMove
+	LockCursor
+	DrawModelExecute
+	PaintTraverse
+	FrameStageNotify
+	All EventListeners (Using AddListenerGlobal)
 
 Features:
-  Legitbot
-  Chams
-  Backtrack
-  Much neater organization for skinchanger compared to nSkins
+	Legitbot
+	Chams
+	Backtrack
+	Much neater organization for skinchanger compared to nSkins
 
 Interfaces:
 	ISurface
