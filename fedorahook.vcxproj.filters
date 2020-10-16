@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="deps\imgui\imgui.cpp">
+      <Filter>Dependency</Filter>
+    </ClCompile>
+    <ClCompile Include="deps\imgui\imgui_draw.cpp">
+      <Filter>Dependency</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui.cpp" />
+    <ClCompile Include="src\dllmain.cpp" />
+    <ClCompile Include="src\Imgui_impl_dx9\imgui_impl_dx9.cpp">
+      <Filter>Dependency</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Utilities\config.cpp">
+      <Filter>utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilities\drawing.cpp">
+      <Filter>utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilities\item_definitions.cpp">
+      <Filter>utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilities\kit_parser.cpp">
+      <Filter>utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilities\netvar_manager.cpp">
+      <Filter>utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilities\platform.cpp">
+      <Filter>utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilities\render.cpp">
+      <Filter>utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utilities\update_check.cpp">
+      <Filter>utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hooks\create_move.cpp">
+      <Filter>hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hooks\draw_model_execute.cpp">
+      <Filter>hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hooks\event_listener.cpp">
+      <Filter>hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hooks\frame_stage_notify.cpp">
+      <Filter>hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hooks\paint_traverse.cpp">
+      <Filter>hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hooks\post_data_update.cpp">
+      <Filter>hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hooks\sequence.cpp">
+      <Filter>hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Features\legitbot.cpp">
+      <Filter>features</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Features\visuals.cpp">
+      <Filter>features</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SDK\UtlBuffer.cpp">
+      <Filter>sdk\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SDK\UtlString.cpp">
+      <Filter>sdk\Interface</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\SDK\declarations.hpp">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\interfaces.hpp">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="src\main.hpp" />
+    <ClInclude Include="src\sdk.hpp">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities\config.hpp">
+      <Filter>utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities\drawing.hpp">
+      <Filter>utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities\fnv_hash.hpp">
+      <Filter>utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities\item_definitions.hpp">
+      <Filter>utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities\kit_parser.hpp">
+      <Filter>utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities\math.hpp">
+      <Filter>utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities\netvar_manager.hpp">
+      <Filter>utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities\platform.hpp">
+      <Filter>utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities\render.hpp">
+      <Filter>utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities\update_check.hpp">
+      <Filter>utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities\vmt_smart_hook.hpp">
+      <Filter>utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hooks\create_move.hpp">
+      <Filter>hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hooks\event_listener.hpp">
+      <Filter>hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hooks\hooks.hpp">
+      <Filter>hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hooks\recv_proxy_hook.hpp">
+      <Filter>hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Features\legitbot.hpp">
+      <Filter>features</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Features\visuals.hpp">
+      <Filter>features</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\CBaseClientState.hpp">
+      <Filter>sdk\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\CBaseEntity.hpp">
+      <Filter>sdk\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\CBaseGlobalVars.hpp">
+      <Filter>sdk\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\CInput.hpp">
+      <Filter>sdk\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\ClientClass.hpp">
+      <Filter>sdk\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\Colors.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\DataTable.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\IAppSystem.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\IBaseClientDLL.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\IClientEntity.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\IClientEntityList.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\IClientMode.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\ICvar.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\IEngineSound.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\IEngineTrace.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\IGameEventManager.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\IInputSystem.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\ILocalize.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\IMaterials.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\IMaterialSystem.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\IMoveHelper.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\IPanel.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\IPhysics.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\IPrediction.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\IStudio.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\ISurface.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\IVEngineClient.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\IVModelInfoClient.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\IVModelRender.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\IVRenderView.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\UtlBuffer.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\UtlMemory.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\UtlString.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\UtlVector.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\Vector.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SDK\VMatrix.hpp">
+      <Filter>sdk\Interface</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Dependency">
+      <UniqueIdentifier>{ea773f6e-6f49-4132-8b2f-e1cd313697d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk">
+      <UniqueIdentifier>{65eccfc5-d06e-4ad9-9c4d-d85d8442d680}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\Interface">
+      <UniqueIdentifier>{51010c84-be5b-452b-a3a4-2e1d7be8f8b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\Class">
+      <UniqueIdentifier>{dcbb33bc-5f9f-45d0-9c1c-4cca665c10d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utilities">
+      <UniqueIdentifier>{220d34fa-499b-4bce-9e4f-493421f1b61d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="hooks">
+      <UniqueIdentifier>{4edde6e6-abf1-4097-8ca9-8ac78f0312a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="features">
+      <UniqueIdentifier>{75efad86-01e7-4bdf-9199-ac02b7a80d3c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
