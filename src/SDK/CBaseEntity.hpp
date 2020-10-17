@@ -2,7 +2,7 @@
 #include "declarations.hpp"
 #include "IClientEntity.hpp"
 #include "../Utilities/netvar_manager.hpp"
-
+#include "UtlVector.hpp"
 
 namespace sdk
 {
@@ -126,41 +126,6 @@ namespace sdk
 		PNETVAR(GetWearables, "CBaseCombatCharacter", "m_hMyWearables", CBaseHandle);
 	};
 
-	class C_BasePlayer : public C_BaseCombatCharacter
-	{
-	public:
-		NETVAR(GetLifeState, "CBasePlayer", "m_lifeState", LifeState);
-		NETVAR(GetViewModel, "CBasePlayer", "m_hViewModel[0]", CBaseHandle); 
-		NETVAR(GetViewOffset, "CBasePlayer", "m_vecViewOffset[0]", Vector);
-		NETVAR(GetOrigin, "CBaseEntity", "m_vecOrigin", Vector);
-		NETVAR(GetTeamNumber, "CBaseEntity", "m_iTeamNum", int);	
-		NETVAR(GetSimTime, "CBaseEntity", "m_flSimulationTime", float);
-		NETVAR(GetAimPunchAngle, "CBasePlayer", "m_aimPunchAngle", QAngle);
-		NETVAR(GetFlags, "CBasePlayer", "m_fFlags", EntityFlags);
-
-
-		NETVAR(GetWeaponActive, "CBaseCombatCharacter", "m_hActiveWeapon", CBaseHandle);
-		NETVAR(HitboxSet, "CBaseAnimating", "m_nHitboxSet", int);
-		int	GetMoveType() 
-		{
-			return *reinterpret_cast<int*> (reinterpret_cast<uintptr_t>(this) + 0x25C); //hazedumper
-		}
-
-		Vector BonePosition(int bone)
-		{
-			matrix3x4_t pMat[128];
-			this->SetupBones(pMat, 128, 256, GetSimTime());
-			return Vector(pMat[bone][0][3], pMat[bone][1][3], pMat[bone][2][3]);
-		}
-
-		Vector BonePositionFromMatrix(int bone, matrix3x4_t* pMat)
-		{
-			return Vector(pMat[bone][0][3], pMat[bone][1][3], pMat[bone][2][3]);
-		}
-
-		Vector GetEyePosition() { return this->GetOrigin() + this->GetViewOffset(); }
-	};
-
 	class C_BaseCombatWeapon : public C_BaseAnimating
 	{
 	public:
@@ -205,6 +170,191 @@ namespace sdk
 		NETVAR(GetFallbackSeed, "CBaseAttributableItem", "m_nFallbackSeed", unsigned);
 		NETVAR(GetFallbackWear, "CBaseAttributableItem", "m_flFallbackWear", float);
 		NETVAR(GetFallbackStatTrak, "CBaseAttributableItem", "m_nFallbackStatTrak", unsigned);
+	};
+
+#pragma pack(push, 1)
+	class animstate_pose_param_cache_t
+	{
+	public:
+		bool m_bInitialized; //0x0000
+		char pad_01[3]; //0x0001
+		int32_t m_iPoseParameter; //0x0004
+		char* m_szPoseParameter; //0x0008
+	}; //Size: 0x000C
+#pragma pack(pop)
+
+#pragma pack(push, 1)
+	struct AimLayer
+	{
+		float m_flUnknown0;
+		float m_flTotalTime;
+		float m_flUnknown1;
+		float m_flUnknown2;
+		float m_flWeight;
+	};
+#pragma pack(pop)
+
+#pragma pack(push, 1)
+	struct AimLayers
+	{
+		AimLayer layers[3];
+	};
+#pragma pack(pop)
+
+	struct C_CSGOPlayerAnimState
+	{
+		void* vtable;
+		bool m_bIsReset;
+		bool m_bUnknownClientBool;
+		char pad[2];
+		int m_iSomeTickcount;
+		float m_flFlashedStartTime;
+		float m_flFlashedEndTime;
+		AimLayers m_AimLayers;
+		int m_nModelIndex;
+		int m_iUnknownClientArr[3];
+		C_BaseEntity* pBaseEntity;
+		C_BaseCombatWeapon* pActiveWeapon;
+		C_BaseCombatWeapon* pLastActiveWeapon;
+		float m_flLastClientSideAnimationUpdateTime;
+		int32_t m_iLastClientSideAnimationUpdateFramecount;
+		float m_flLastClientSideAnimationUpdateTimeDelta;
+		float m_flEyeYaw;
+		float m_flPitch;
+		float m_flGoalFeetYaw;
+		float m_flCurrentFeetYaw;
+		float m_flCurrentMoveDirGoalFeetDelta;
+		float m_flGoalMoveDirGoalFeetDelta;
+		float m_flFeetVelDirDelta;
+		float pad_0094;
+		float m_flFeetCycle;
+		float m_flFeetWeight;
+		float m_fUnknown2;
+		float m_fDuckAmount;
+		float m_flHitGroundCycle;
+		float m_fUnknown3;
+		Vector m_vOrigin;
+		Vector m_vLastOrigin;
+		Vector m_vVelocity;
+		Vector m_vVelocityNormalized;
+		Vector m_vecLastAcceleratingVelocity;
+		float m_flSpeed;
+		float m_flAbsVelocityZ;
+		float m_flSpeedNormalized;
+		float m_flRunningSpeed;
+		float m_flDuckingSpeed;
+		float m_flTimeSinceStartedMoving;
+		float m_flTimeSinceStoppedMoving;
+		bool m_bOnGround;
+		bool m_bInHitGroundAnimation;
+		char pad_010A[2];
+		float m_flNextLowerBodyYawUpdateTime;
+		float m_flTotalTimeInAir;
+		float m_flStartJumpZOrigin;
+		float m_flHitGroundWeight;
+		float m_flGroundFraction;
+		bool m_bJust_Landed;
+		bool m_bJust_LeftGround;
+		char pad_0120[2];
+		float m_flDuckRate;
+		bool m_bOnLadder;
+		char pad_0128[3];
+		float m_flLadderCycle;
+		float m_flLadderWeight;
+		bool m_bNotRunning;
+		char pad_0135[3];
+		bool m_bInBalanceAdjust;
+		char pad_0141[3];
+		CUtlVectorSimple m_Modifiers;
+		int gap148[1];
+		float m_flTimeOfLastInjury;
+		float m_flLastSetupLeanCurtime;
+		Vector m_vecLastSetupLeanVelocity;
+		Vector m_vecSetupLeanVelocityDelta;
+		Vector m_vecSetupLeanVelocityInterpolated;
+		float m_flLeanWeight;
+		int m_iUnknownIntArr2[2];
+		bool m_bFlashed;
+		char m_bFlashedPad[3];
+		float m_flStrafeWeight;
+		int m_iUnknownint3;
+		float m_flStrafeCycle;
+		int m_iStrafeSequence;
+		bool m_bStrafing;
+		char m_bStrafingPad[3];
+		float m_flTotalStrafeTime;
+		int m_iUnknownInt4;
+		bool m_bUnknownBool__;
+		bool m_bIsAccelerating;
+		char pad_01AE[2];
+		animstate_pose_param_cache_t m_arrPoseParameters[20];
+		int m_iUnknownClientInt__;
+		float m_flVelocityUnknown;
+		int m_iMoveState;
+		float m_flMovePlaybackRate;
+		float m_flUnknownFL0;
+		float m_flUnknownFL;
+		float m_flUnknownFL1;
+		float m_flMinYawServer;
+		float m_flMaxYawServer;
+		float m_flMaximumPitchServer;
+		float m_flMinimumPitchServer;
+		int m_iUnknownInt;
+		char pad_02D0[84];
+		float m_flEyePosZ;
+		bool m_bIsDucked;
+		char pad_0329[3];
+		float m_flUnknownCap1;
+		float m_flMinYaw;
+		float m_flMaxYaw;
+		float m_flMinPitch;
+		float m_flMaxPitch;
+		int m_iAnimsetVersion;
+
+	};
+
+	class C_BasePlayer : public C_BaseCombatCharacter
+	{
+	public:
+		NETVAR(GetLifeState, "CBasePlayer", "m_lifeState", LifeState);
+		NETVAR(GetViewModel, "CBasePlayer", "m_hViewModel[0]", CBaseHandle); 
+		NETVAR(GetViewOffset, "CBasePlayer", "m_vecViewOffset[0]", Vector);
+		NETVAR(GetOrigin, "CBaseEntity", "m_vecOrigin", Vector);
+		NETVAR(GetTeamNumber, "CBaseEntity", "m_iTeamNum", int);	
+		NETVAR(GetSimTime, "CBaseEntity", "m_flSimulationTime", float);
+		NETVAR(GetAimPunchAngle, "CBasePlayer", "m_aimPunchAngle", QAngle);
+		NETVAR(GetFlags, "CBasePlayer", "m_fFlags", EntityFlags);
+		NETVAR(GetVelocity, "CBasePlayer", "m_vecVelocity[0]", Vector);
+		NETVAR(GetLowerBodyYaw, "CCSPlayer", "m_flLowerBodyYawTarget", float_t);
+		NETVAR(GetDuckAmount, "CCSPlayer", "m_flDuckAmount", float_t);
+		NETVAR(GetEyeAngles, "CCSPlayer", "m_angEyeAngles[0]", QAngle);;
+		NETVAR_OFFSET(GetOldSimTime, "CBaseEntity", "m_flSimulationTime", 0x4, float_t);
+
+		NETVAR(GetWeaponActive, "CBaseCombatCharacter", "m_hActiveWeapon", CBaseHandle);
+		NETVAR(HitboxSet, "CBaseAnimating", "m_nHitboxSet", int);
+		int	GetMoveType() 
+		{
+			return *reinterpret_cast<int*> (reinterpret_cast<uintptr_t>(this) + 0x25C); //hazedumper
+		}
+
+		Vector BonePosition(int bone)
+		{
+			matrix3x4_t pMat[128];
+			this->SetupBones(pMat, 128, 256, GetSimTime());
+			return Vector(pMat[bone][0][3], pMat[bone][1][3], pMat[bone][2][3]);
+		}
+
+		Vector BonePositionFromMatrix(int bone, matrix3x4_t* pMat)
+		{
+			return Vector(pMat[bone][0][3], pMat[bone][1][3], pMat[bone][2][3]);
+		}
+
+		C_CSGOPlayerAnimState* GetPlayerAnimState()
+		{
+			return *reinterpret_cast<C_CSGOPlayerAnimState**>(this + 0x3914);
+		}
+
+		Vector GetEyePosition() { return this->GetOrigin() + this->GetViewOffset(); }
 	};
 
 	class C_BaseViewModel : public C_BaseAnimating
